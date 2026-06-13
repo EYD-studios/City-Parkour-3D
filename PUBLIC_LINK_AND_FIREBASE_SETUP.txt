@@ -1,0 +1,47 @@
+CITY PARKOUR v39 - PUBLIC LINK SETUP
+
+This build is based on v37, with an online-ready worldwide leaderboard layer added.
+
+IMPORTANT:
+The game works immediately offline/local.
+For a TRUE worldwide leaderboard, you must add a Firebase config in online-config.js.
+
+FASTEST WAY TO SHARE WITH FRIENDS:
+1. Extract this ZIP.
+2. Go to https://app.netlify.com/drop
+3. Drag the extracted game folder into Netlify.
+4. Netlify gives you a public link.
+5. Send that link to friends.
+
+TO ENABLE REAL WORLDWIDE LEADERBOARD:
+1. Go to https://firebase.google.com
+2. Create project.
+3. Add a Web App.
+4. Copy Firebase config.
+5. Open online-config.js.
+6. Replace window.CP_FIREBASE_CONFIG = null; with your config.
+7. Enable Firestore Database.
+8. Use this Firestore rules for simple testing:
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /city_parkour_scores/{docId} {
+      allow read, write: if true;
+    }
+  }
+}
+
+WARNING:
+The above rules are open for testing only. For a real public game, lock them down with authentication.
+
+OWNER CODE:
+OWNER2026
+
+CO-OWNER CODE:
+COOWNER2026
+
+PRIZE CODES:
+CITY100
+OWNERBOOST
+PARKOURVIP

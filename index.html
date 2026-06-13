@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>City Parkour</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <button id="nameBtn" class="corner-btn">👤 NAME</button>
+
+  <div id="menu" class="screen">
+    <div class="card">
+      <div class="logo">🌆 CITY<br><span>PARKOUR</span></div>
+      <p class="tagline">Smooth rooftop runner. Stable version.</p>
+      <button id="playBtn">▶️ PLAY</button>
+      <button id="timedBtn">⏱️ TIMED RECORD</button>
+      
+<button id="worldLeaderboardBtn">🌍 WORLDWIDE LEADERBOARD</button>
+<button id="recordBtn">🏆 MY RECORD</button>
+      <button id="accessoriesBtn">🎒 ACCESSORIES</button>
+      <button id="settingsBtn">⚙️ SETTINGS</button>
+      <button id="howBtn">🏃 HOW TO PLAY</button>
+      <p class="hint">Drag mouse / A-D / arrows = move • Space = jump • Shift = slide • P/Esc = pause</p>
+    </div>
+  </div>
+
+  <div id="how" class="screen hidden">
+    <div class="card small">
+      <h2>🏃 HOW TO PLAY</h2>
+      <p>You auto-run across rooftops. Move left and right to line up with platforms.</p>
+      <p>Jump barriers and gaps with Space. Slide under vents/carts with Shift. Reach the finish flag.</p>
+      <button class="back">🏠 BACK</button>
+    </div>
+  </div>
+
+  <div id="settings" class="screen hidden">
+    <div class="card small">
+      <h2>⚙️ SETTINGS</h2>
+      <label>Speed
+        <select id="speedSelect">
+          <option value="easy">Easy</option>
+          <option value="normal">Normal</option>
+          <option value="fast">Fast</option>
+        </select>
+      </label>
+      <label>Theme
+        <select id="themeSelect">
+          <option value="day">Day City</option>
+          <option value="night">Night City</option>
+        </select>
+      </label>
+      <button class="back">🏠 BACK</button>
+    </div>
+  </div>
+
+  <div id="nameScreen" class="screen hidden">
+    <div class="card small">
+      <h2>👤 PLAYER NAME</h2>
+      <input id="playerNameInput" maxlength="18" placeholder="Player name">
+      <input id="ownerCodeInput" maxlength="20" placeholder="Owner code optional">
+      <button id="saveNameBtn">💾 SAVE NAME</button>
+      <p class="hint">No code = normal Player. Owner code = OWNER2026.</p>
+      <button class="back">🏠 BACK</button>
+    </div>
+  </div>
+
+  <div id="accessories" class="screen hidden">
+    <div class="card small scroll">
+      <h2>🎒 ACCESSORIES</h2>
+      <p>Coins: <b><span id="coinMenu">0</span></b></p>
+      <div id="accessoryList"></div>
+      <button class="back">🏠 BACK</button>
+    </div>
+  </div>
+
+  <div id="record" class="screen hidden">
+    <div class="card small scroll">
+      <h2>🏆 MY RECORD</h2>
+      <div id="onlineStatus" class="online-status">🌐 Online leaderboard: checking...</div>
+      <div id="recordBox"></div>
+      <div id="ownerTools" class="owner-tools hidden">
+        <h3>👑 OWNER TOOLS</h3>
+        <button id="addCoinsBtn">🪙 ADD 500 COINS</button>
+        <button id="addGemsBtn">💎 ADD 50 GEMS</button>
+        <button id="unlockAllBtn">🎒 UNLOCK ALL ACCESSORIES</button>
+        <button id="resetRecordBtn">🔁 RESET RECORD</button>
+        <button id="refreshOnlineBtn">🌐 REFRESH ONLINE BOARD</button>
+        <button id="uploadMyScoreBtn">⬆️ UPLOAD MY SCORE</button>
+        <button id="forceNightBtn">🌙 FORCE NIGHT</button>
+        <button id="forceDayBtn">☀️ FORCE DAY</button>
+      </div>
+      <button class="back">🏠 BACK</button>
+    </div>
+  </div>
+
+  <div id="pause" class="screen hidden">
+    <div class="card small">
+      <h2>PAUSED</h2>
+      <button id="resumeBtn">🎮 RESUME</button>
+      <button id="restartBtn">🔄 RESTART</button>
+      <button id="mainMenuBtn">🏠 MAIN MENU</button>
+    </div>
+  </div>
+
+  <div id="complete" class="screen hidden">
+    <div class="card">
+      <h2 id="completeTitle">🏁 LEVEL COMPLETE!</h2>
+      <p id="completeText">Great run!</p>
+      <button id="nextLevelBtn">🚀 NEXT LEVEL</button>
+      <button id="completeMenuBtn">🏠 MAIN MENU</button>
+    </div>
+  </div>
+
+  <div id="hud" class="hidden">
+    <div>🏁 LEVEL <span id="levelText">1</span></div>
+    <div>⭐ SCORE <span id="scoreText">0</span></div>
+    <div>🪙 COINS <span id="coinText">0</span></div>
+    <div>💎 GEMS <span id="gemText">0</span></div>
+    <div id="statusText">RUN</div>
+  </div>
+
+  <div id="timer" class="hidden">⏱️ TIME: <span id="timeText">0.0</span>s</div>
+  <button id="pauseBtn" class="hidden">Ⅱ</button>
+  <div id="message" class="hidden"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <script src="online-config.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
+<div id="worldLeaderboard" class="screen hidden">
+  <div class="card small">
+    <h2>🌍 WORLDWIDE LEADERBOARD</h2>
+    <div id="worldLeaderboardBox">Leaderboard ready for Firebase connection.</div>
+    <button class="back">🏠 BACK</button>
+  </div>
+</div>
+

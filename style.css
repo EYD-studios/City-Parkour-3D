@@ -1,0 +1,71 @@
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#9fc7df;font-family:Inter,Arial,sans-serif;color:#26313a}
+canvas{display:block}
+.hidden{display:none!important}
+.screen{position:fixed;inset:0;z-index:20;display:grid;place-items:center;overflow-y:auto;background:linear-gradient(rgba(135,180,210,.88),rgba(230,235,232,.72)),linear-gradient(180deg,#8bc1e0,#f1e2c2)}
+.screen:before{content:"";position:absolute;bottom:0;width:100%;height:30%;background:linear-gradient(90deg,transparent 0 8%,rgba(60,70,78,.45) 8% 18%,transparent 18% 24%,rgba(80,90,96,.42) 24% 38%,transparent 38% 48%,rgba(45,53,60,.45) 48% 62%,transparent 62% 72%,rgba(75,84,92,.42) 72% 88%,transparent 88%);clip-path:polygon(0 100%,0 50%,10% 50%,10% 20%,20% 20%,20% 55%,32% 55%,32% 28%,45% 28%,45% 62%,58% 62%,58% 18%,72% 18%,72% 58%,86% 58%,86% 30%,100% 30%,100% 100%);opacity:.8}
+.card{position:relative;width:min(760px,90vw);padding:40px;border-radius:18px;background:rgba(255,255,255,.91);box-shadow:0 30px 80px rgba(35,45,50,.28);text-align:center;border:4px solid rgba(20,20,20,.08);max-height:82vh;overflow-y:auto}
+.card.small{width:min(560px,88vw)}
+.logo{font-family:"Bebas Neue",Impact,sans-serif;font-size:clamp(72px,12vw,128px);line-height:.78;color:#26313a;text-shadow:3px 4px 0 rgba(255,255,255,.75)}
+.logo span{color:#d85a24}
+h2{font-family:"Bebas Neue",Impact,sans-serif;font-size:58px;margin:8px 0 14px}
+p{font-size:20px;line-height:1.45}
+.tagline{font-weight:900;font-size:23px}
+.hint{font-size:15px;color:#59656d}
+button,select,input{font-family:Inter;font-weight:900;font-size:17px;width:min(340px,82vw);display:block;margin:13px auto;padding:15px 18px;border-radius:12px;border:3px solid #26313a;background:#f6c453;color:#26313a;box-shadow:0 6px 0 #26313a;cursor:pointer}
+input,select{background:#fff;text-align:center;box-shadow:none}
+button:hover{transform:translateY(2px);box-shadow:0 4px 0 #26313a}
+label{display:block;font-weight:900;font-size:20px;margin:20px}
+.corner-btn{position:fixed;top:16px;left:16px;z-index:30;width:auto;min-width:92px;padding:10px 14px;margin:0;font-size:14px;border-radius:999px}
+.corner-btn.hide{display:none!important}
+#hud{position:fixed;z-index:10;top:16px;left:16px;display:flex;gap:10px;flex-wrap:wrap;font-weight:900;pointer-events:none}
+#hud div{background:rgba(255,255,255,.86);border:3px solid rgba(38,49,58,.35);border-radius:12px;padding:10px 14px}
+#pauseBtn{position:fixed;z-index:12;top:16px;right:18px;width:52px;height:52px;border-radius:50%;padding:0;margin:0}
+#timer{position:fixed;z-index:15;top:14px;left:50%;transform:translateX(-50%);font-family:"Bebas Neue";font-size:clamp(34px,6vw,72px);font-weight:900;color:#fff;text-shadow:0 5px 0 #26313a,0 12px 32px rgba(0,0,0,.35);pointer-events:none}
+#message{position:fixed;z-index:14;top:20%;left:0;right:0;text-align:center;font-family:"Bebas Neue";font-size:clamp(42px,8vw,88px);color:#fff;text-shadow:0 5px 0 #26313a,0 12px 35px rgba(0,0,0,.4);pointer-events:none}
+#accessoryList,#recordBox{display:grid;gap:10px;margin:16px auto;max-width:470px}
+.accessory,.record-card{border:3px solid rgba(38,49,58,.25);border-radius:12px;background:rgba(255,255,255,.78);padding:12px;text-align:left;font-weight:900}
+.accessory.equipped{border-color:#d85a24;background:rgba(246,196,83,.35)}
+.accessory button{width:100%;font-size:14px;padding:10px;margin:8px 0 0}
+.owner-tools{margin-top:16px;padding:14px;border:3px solid rgba(216,90,36,.35);border-radius:14px;background:rgba(246,196,83,.18)}
+body.night{background:#0b1020}
+body.night .screen{background:radial-gradient(circle at 50% 18%,rgba(80,130,255,.22),transparent 28%),radial-gradient(circle at 15% 85%,rgba(176,70,255,.20),transparent 30%),linear-gradient(180deg,#080b18,#111936)}
+body.night .card{background:rgba(10,14,30,.92);color:#f4f8ff;border-color:rgba(120,170,255,.35)}
+body.night .logo{color:#f4f8ff;text-shadow:3px 4px 0 rgba(0,0,0,.35)}
+body.night .logo span{color:#7ddcff}
+body.night button,body.night select{background:#7ddcff;color:#10162a}
+body.night .hint{color:#e9f0ff}
+/* v32 color polish */
+.card{backdrop-filter:blur(4px)}
+
+#mapName{position:fixed;z-index:16;top:90px;left:50%;transform:translateX(-50%);font-family:"Bebas Neue";font-size:clamp(42px,7vw,86px);color:#fff;text-shadow:0 5px 0 #26313a,0 12px 32px rgba(0,0,0,.35);pointer-events:none}
+#globalText{position:fixed;z-index:16;bottom:30px;left:50%;transform:translateX(-50%);font-family:Inter;font-weight:900;font-size:22px;background:rgba(246,196,83,.9);border:3px solid #26313a;border-radius:12px;padding:10px 18px;color:#26313a}
+
+/* v34 fixed day/night themes */
+body.day .screen{
+  background:
+    radial-gradient(circle at 50% 14%,rgba(255,255,255,.34),transparent 28%),
+    linear-gradient(rgba(135,190,225,.88),rgba(245,224,190,.70)),
+    linear-gradient(180deg,#8bc1e0,#f1e2c2);
+}
+body.night .screen{
+  background:
+    radial-gradient(circle at 50% 18%,rgba(80,130,255,.24),transparent 28%),
+    radial-gradient(circle at 15% 85%,rgba(176,70,255,.22),transparent 30%),
+    linear-gradient(180deg,#070b18 0%,#111936 100%);
+}
+body.day .card{background:rgba(255,255,255,.92);color:#26313a}
+body.night .card{background:rgba(10,14,30,.93);color:#f4f8ff;border-color:rgba(120,170,255,.35)}
+body.night .card p, body.night .card h2, body.night .tagline, body.night .hint{color:#e9f0ff}
+
+/* v39 online-ready additions */
+.online-status{
+  font-weight:900;
+  padding:10px 14px;
+  border:3px solid rgba(38,49,58,.25);
+  border-radius:12px;
+  background:rgba(255,255,255,.75);
+  margin:10px auto 14px;
+  max-width:460px;
+}
+body.night .online-status{background:rgba(10,14,30,.75);color:#e9f0ff}
+.record-card.online{border-color:#7ddcff;background:rgba(125,220,255,.18)}
